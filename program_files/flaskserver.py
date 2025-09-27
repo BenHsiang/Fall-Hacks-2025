@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import ClassCart
+import ClassDish
 
 # Sets up flask
 app = Flask(__name__)
@@ -17,6 +19,15 @@ def receive_json():
     if request.is_json:
         data = request.get_json()
         print("Received data:", data)
+        #moving data from data into cart class
+        #assuming calls for data are like this though I wouldnt know. 
+        #prays in will run
+        MyCart=ClassCart.Cart(1111,"User")
+        for x in data:
+            Dish=ClassDish.Dish(x.price,0,x.title,x.restaurant)
+            MyCart.addDishToCart(Dish,1)
+        MyCart.PrintOrder
+
     
     # Not important, just error messages 
         return jsonify({"message": "Data received successfully!", "received_data": data}), 200

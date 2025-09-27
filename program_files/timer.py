@@ -13,7 +13,7 @@ def countdown(minutes):
     seconds_left = 59
 
     while (minutes > -1):
-        print("Seconds left: {:02}:{:02}".format(minutes, seconds_left), end = "\r")
+        print("Time left: {:02}:{:02}".format(minutes, seconds_left), end = "\r")
         time.sleep(1)
         seconds_left -= 1
 
