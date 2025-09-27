@@ -153,31 +153,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Hook up Submit button
-  document.querySelector('.submit-button').addEventListener('click', () => {
+  document.querySelector('.submit-button').addEventListener('click', () => {  
     if (selectedItems.length === 0) {
       alert("You haven't selected any items.");
       return;
     }
 
-    console.log("Selected Items:");
-    selectedItems.forEach(item => {
-      console.log(`- ${item.restaurant}: ${item.title} (${item.price})`);
+    // Send selected items to server
+    fetch('https://yourserver.com/api/orders', { // !!! EDIT THIS FOR WHERE YOU WANT TO SEND THE ORDER DATA !!!
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        items: selectedItems
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Order successfully submitted:', data);
+      alert("Order submitted successfully!");
+
+      // Clear the selection
+      selectedItems.length = 0;
+      document.querySelectorAll('.menu-item.selected').forEach(el => {
+        el.classList.remove('selected');
+      });
+      updateSummary();
+    })
+    .catch(error => {
+      console.error('Error submitting order:', error);
+      alert("There was an error submitting your order.");
     });
-
-    alert("Check console");
-
-    // ===== CLEAR SELECTION =====
-
-    // 1. Clear the array
-    selectedItems.length = 0;
-
-    // 2. Remove selected class from any selected item
-    document.querySelectorAll('.menu-item.selected').forEach(el => {
-      el.classList.remove('selected');
-    });
-
-    // 3. Update the summary window
-    updateSummary();
   });
 
   // Default first button active
