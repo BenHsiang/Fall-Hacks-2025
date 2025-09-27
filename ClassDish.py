@@ -4,11 +4,13 @@ class Dish:
     price = 0.0  
     ordered =0
     Name="Im a dish"
+    Resturant="IDk man"
 
-    def __init__(self, price,ordered, Name):
+    def __init__(self, price,ordered, Name,Resturant):
         self.price=price
         self.ordered=ordered
         self.Name=Name
+        self.Resturant=Resturant
     
     def add_item(self, amount):
         self.ordered+= amount
@@ -25,5 +27,7 @@ class Dish:
     
     def get_Amount_Ordered(self):
         return self.ordered
+    def get_Res(self):
+        return self.Resturant
     
         
