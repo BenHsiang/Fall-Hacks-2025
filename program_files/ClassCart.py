@@ -23,28 +23,32 @@ class Cart:
         added=False
         if(length>0):
             for x in self.ItemsOrdered:
-                if(x.Name== Dish.Name & x.price == Dish.price & x.ordered== Dish.ordered):
-                    x.addItem(x,amount)
+                if((x.Name== Dish.Name) & (x.price == Dish.price) & (x.ordered== Dish.ordered)):
+                    x.addItem(amount)
                     added=True
                     break
             if(added==False):
-                Dish.addItem(Dish,amount)
+                Dish.add_item(amount)
                 self.ItemsOrdered.append(Dish)   
         else:
-            Dish.addItem(Dish,amount)
+            Dish.add_item(amount)
             self.ItemsOrdered.append(Dish)   
-        CalculateSum(self) #testing is required for this cause im not sure if it will run a class function  
+        self.CalculateSum() #testing is required for this cause im not sure if it will run a class function  
     def Remove_Item(self,Dish,amount):
         for x in self.ItemsOrdered :
-            if(x.Name== Dish.Name & x.price == Dish.price & x.ordered== Dish.ordered):
-                x.removeItem(x,amount)
+            if((x.Name== Dish.Name) & (x.price == Dish.price) & (x.ordered== Dish.ordered)):
+                x.remove_item(amount)
                 if(x.ordered<=0):
                     self.ItemsOrdered.remove(x)
-                CalculateSum(self)
+                self.CalculateSum()
                 break
+    def PrintOrder(self):
+        for x in self.ItemsOrdered:
+            print(x.Name + " x "+(str)(x.ordered) +"   "+ (str)(x.ordered*x.price)) # hopefully it can pint new lines
+        print("Sub Total:",self.sum)
+
      
 
             
         
-
     
