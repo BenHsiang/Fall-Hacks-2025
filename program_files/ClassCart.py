@@ -1,4 +1,5 @@
 import math
+import json
 class Cart:
     UserId=0
     Name="Bob"
@@ -10,7 +11,7 @@ class Cart:
     Tax=0 
 
     ## add the Additonal stuff aka the tax and the wrong math anwsers
-   
+   ##webiste is handling add and
 
     def __init__(self,UserId,name):
         self.Name=name
@@ -66,6 +67,9 @@ class Cart:
         self.CalcAdd()
         self.CalcTax()
         self.TotalCost=self.sum +self.AdditonalFees +self.Tax
+    def Set_Item_List(self,jsonString): #confuseion but we move forward?
+        self.ItemsOrdered=json.loads(jsonString)
+        
      
     
            
