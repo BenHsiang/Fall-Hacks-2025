@@ -1,8 +1,10 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
+  const selectedItems = [];
+
+  // Fades out the logo screen at the start
   window.addEventListener('load', () => {
-  const splash = document.getElementById('splash-screen');
+    const splash = document.getElementById('splash-screen');
     setTimeout(() => {
       splash.style.opacity = '0';
       splash.addEventListener('transitionend', () => {
@@ -66,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ]
   };
+
   function renderMenu(restaurantName) {
     const grid = document.querySelector('.menu-grid');
     const items = menuData[restaurantName];
@@ -88,12 +91,55 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="menu-item-description">${item.description}</div>
           <div class="menu-item-price">${item.price}</div>
         `;
-        div.addEventListener('click', () => div.classList.toggle('selected'));
+
+        // Use a unique identifier (like title + restaurant name)
+        const itemId = `${restaurantName}__${item.title}`;
+
+        div.addEventListener('click', () => {
+          div.classList.toggle('selected');
+
+          const index = selectedItems.findIndex(i => i.id === itemId);
+          if (index > -1) {
+            // Deselect
+            selectedItems.splice(index, 1);
+          } else {
+            // Select
+            selectedItems.push({
+              id: itemId,
+              restaurant: restaurantName,
+              title: item.title,
+              description: item.description,
+              price: item.price
+            });
+          }
+
+          updateSummary();
+          console.log('Current Selection:', selectedItems); // Optional live debug
+        });
+
         grid.appendChild(div);
       });
 
       grid.style.opacity = '1';
     }, 300);
+  }
+
+  function updateSummary() {
+    const summaryItemsDiv = document.querySelector('.summary-items');
+    const summaryTotalDiv = document.querySelector('.summary-total');
+
+    if (!summaryItemsDiv || !summaryTotalDiv) return;
+
+    // Display selected item titles
+    summaryItemsDiv.innerHTML = selectedItems.map(item => `${item.title}`).join(', ') || 'No items selected';
+
+    // Calculate total
+    const total = selectedItems.reduce((sum, item) => {
+      const price = parseFloat(item.price.replace('$', ''));
+      return sum + (isNaN(price) ? 0 : price);
+    }, 0);
+
+    summaryTotalDiv.textContent = `Total: $${total.toFixed(2)}`;
   }
 
   // Hook up sidebar buttons
@@ -106,6 +152,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Hook up Submit button
+  document.querySelector('.submit-button').addEventListener('click', () => {
+    if (selectedItems.length === 0) {
+      alert("You haven't selected any items.");
+      return;
+    }
+
+    console.log("Selected Items:");
+    selectedItems.forEach(item => {
+      console.log(`- ${item.restaurant}: ${item.title} (${item.price})`);
+    });
+
+    alert("Check console");
+
+    // ===== CLEAR SELECTION =====
+
+    // 1. Clear the array
+    selectedItems.length = 0;
+
+    // 2. Remove selected class from any selected item
+    document.querySelectorAll('.menu-item.selected').forEach(el => {
+      el.classList.remove('selected');
+    });
+
+    // 3. Update the summary window
+    updateSummary();
+  });
+
+  // Default first button active
   const firstButton = document.querySelectorAll('.button-sidebar')[0];
   if (firstButton) {
     firstButton.classList.add('active');
