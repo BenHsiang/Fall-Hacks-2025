@@ -7,7 +7,6 @@
 # Brandon Fong
 # Duc anh Nguyen
 
-import test
 import ClassCart
 import ClassDish
 import testi 
