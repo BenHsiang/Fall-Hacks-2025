@@ -22,4 +22,4 @@ Checklist:
     - [ ] Tracks and displays multiple orders at once
     - [ ] Once the timer reaches 0 on an order, a visual indicator (e.g. checkmark)
         shows that the order is completed
-    - [ ] Details for completed orders disappear from the page after a small amount of time:w
+    - [ ] Details for completed orders disappear from the page after a small amount of time
