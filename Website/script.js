@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const selectedItems = [];
+  total = 0;
 
   // Fades out the logo screen at the start
   window.addEventListener('load', () => {
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     summaryItemsDiv.innerHTML = selectedItems.map(item => `${item.title}`).join(', ') || 'No items selected';
 
     // Calculate total
-    const total = selectedItems.reduce((sum, item) => {
+    total = selectedItems.reduce((sum, item) => {
       const price = parseFloat(item.price.replace('$', ''));
       return sum + (isNaN(price) ? 0 : price);
     }, 0);
@@ -166,7 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        items: selectedItems
+        items: selectedItems,
+        total: total
       })
     })
     .then(response => {

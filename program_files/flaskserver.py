@@ -10,9 +10,12 @@ def receive_json():
         # ✅ CORS preflight needs a 200 or 204 response with no body
         return '', 204
 
+    
     if request.is_json:
         data = request.get_json()
         print("Received data:", data)
+    
+    # Not important, just error messages 
         return jsonify({"message": "Data received successfully!", "received_data": data}), 200
     else:
         return jsonify({"error": "Request must be JSON"}), 400
