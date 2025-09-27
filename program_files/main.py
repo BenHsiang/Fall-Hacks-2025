@@ -7,7 +7,6 @@
 # Brandon Fong
 # Duc anh Nguyen
 
-import test
 import ClassCart
 import ClassDish
 import testi 
@@ -25,7 +24,6 @@ def main():
     GS=ClassDish.Dish(4.29,0,"GREEN SMOOTHIE","Res 4")
 
 
-    test.test()
     testi.testi()
     
 
