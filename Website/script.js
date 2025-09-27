@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Send selected items to server
-    fetch('https://yourserver.com/api/orders', { // !!! EDIT THIS FOR WHERE YOU WANT TO SEND THE ORDER DATA !!!
+    fetch('http://127.0.0.1:5000/', { // !!! EDIT THIS FOR WHERE YOU WANT TO SEND THE ORDER DATA !!! 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
