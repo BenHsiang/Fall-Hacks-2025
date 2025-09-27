@@ -13,6 +13,8 @@ import ClassDish
 import testi 
 #will remove
 def main():
+    #create dishes
+    
 
     test.test()
     testi.testi()

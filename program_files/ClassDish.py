@@ -1,4 +1,4 @@
-
+import math
 class Dish:
     #might have alot of errors thus far 
     price = 0.0  
@@ -19,15 +19,3 @@ class Dish:
     def remove_item(self, amount):
         if(self.ordered>=amount):
             self.ordered-= amount
-    def get_Name(self):
-        return self.Name
-    
-    def get_price(self):
-        return self.price
-    
-    def get_Amount_Ordered(self):
-        return self.ordered
-    def get_Res(self):
-        return self.Resturant
-    
-        

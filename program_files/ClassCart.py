@@ -1,3 +1,4 @@
+import math
 class Cart:
     UserId=0
     Name="Bob"
@@ -14,12 +15,6 @@ class Cart:
     def __init__(self,UserId,name):
         self.Name=name
         self.UserId=UserId
-    def get_sum(self):
-        return self.sum
-    def getUserId(self):
-        return self.UserId
-    def getName(self):
-        return self.Name
     def CalculateSum(self):
         self.sum=0
         for x in self.ItemsOrdered:
@@ -64,6 +59,7 @@ class Cart:
         self.CalcAdd()
         self.CalculateSum()
         self.Tax=(self.AdditonalFees +self.sum)*0.05 #figure out how to round to 2 dec
+        
     
     def CalcTotalCost(self):
         self.CalculateSum()
