@@ -31,8 +31,16 @@ class Cart:
                 self.ItemsOrdered.append(Dish)   
         else:
             self.ItemsOrdered.append(Dish)   
-        CalculateSum(self) #testing is required for this cause im not sure if it will run a class function    
-    
+        CalculateSum(self) #testing is required for this cause im not sure if it will run a class function  
+    def Remove_Item(self,Dish,amount):
+        for x in self.ItemsOrdered :
+            if(x.Name== Dish.Name & x.price == Dish.price & x.ordered== Dish.ordered):
+                x.removeItem(x,amount)
+                if(x.ordered<=0):
+                    self.ItemsOrdered.remove(x)
+                CalculateSum(self)
+                break
+     
 
             
         
