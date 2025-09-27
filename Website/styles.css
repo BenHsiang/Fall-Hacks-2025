@@ -152,14 +152,14 @@ body, html {
 }
 
 .menu-item:hover {
-  background-color: #fff;
+  background-color: #ffffff79;
   color: #3b3b4f;
   transform: scale(1.02);
 }
 
 /* Selected State */
 .menu-item.selected {
-  background-color: #fff;
+  background-color: #ffffff79;
   color: #3b3b4f;
   border-color: #000;
 }
@@ -211,6 +211,6 @@ body, html {
 
 /* Splash logo — much bigger now */
 .splash-logo {
-  height: 350px;
+  height: 750px;
   width: auto;
 }

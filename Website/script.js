@@ -9,5 +9,5 @@ window.addEventListener('load', () => {
     splash.addEventListener('transitionend', () => {
       splash.style.display = 'none';
     });
-  }, 2000); // 2000ms = 2 seconds splash visible
+  }, 1000); // 2000ms = 2 seconds splash visible
 });
