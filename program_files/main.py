@@ -7,12 +7,13 @@
 # Brandon Fong
 # Duc anh Nguyen
 
+import test
 import ClassCart
 import ClassDish
 import testi 
-#will remove
 def main():
     #create dishes
+    MyCart=ClassCart.Cart(1111111,"Bob")
     CheeseBurg=ClassDish.Dish(5.99,0,"CHEESEBURGER","Res 1")
     DBB=ClassDish.Dish(7.99,0,"DOUBLE BACON BURGER","Res 1")
     FriesL=ClassDish.Dish(2.49,0,"FRIES(LARGE)","Res 1")
@@ -24,6 +25,7 @@ def main():
     GS=ClassDish.Dish(4.29,0,"GREEN SMOOTHIE","Res 4")
 
 
+    test.test()
     testi.testi()
     
 

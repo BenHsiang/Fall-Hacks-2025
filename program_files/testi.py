@@ -14,6 +14,8 @@ def testi():
    print(MYCart.sum)
    MYCart.Remove_Item(Dish1,5)
 
+# stuff cux it wont let me save 
+
 
     
 
