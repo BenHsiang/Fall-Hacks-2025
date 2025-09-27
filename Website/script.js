@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           }
 
+          updateSummary();
           console.log('Current Selection:', selectedItems); // Optional live debug
         });
 
@@ -121,6 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       grid.style.opacity = '1';
     }, 300);
+  }
+
+  function updateSummary() {
+    const summaryItemsDiv = document.querySelector('.summary-items');
+    const summaryTotalDiv = document.querySelector('.summary-total');
+
+    if (!summaryItemsDiv || !summaryTotalDiv) return;
+
+    // Display selected item titles
+    summaryItemsDiv.innerHTML = selectedItems.map(item => `${item.title}`).join(', ') || 'No items selected';
+
+    // Calculate total
+    const total = selectedItems.reduce((sum, item) => {
+      const price = parseFloat(item.price.replace('$', ''));
+      return sum + (isNaN(price) ? 0 : price);
+    }, 0);
+
+    summaryTotalDiv.textContent = `Total: $${total.toFixed(2)}`;
   }
 
   // Hook up sidebar buttons
@@ -146,6 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     alert("Check console");
+
+    // ===== CLEAR SELECTION =====
+
+    // 1. Clear the array
+    selectedItems.length = 0;
+
+    // 2. Remove selected class from any selected item
+    document.querySelectorAll('.menu-item.selected').forEach(el => {
+      el.classList.remove('selected');
+    });
+
+    // 3. Update the summary window
+    updateSummary();
   });
 
   // Default first button active

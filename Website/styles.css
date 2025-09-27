@@ -214,3 +214,41 @@ body, html {
   height: 750px;
   width: auto;
 }
+
+.summary-window {
+  position: fixed;
+  bottom: 0;
+  left: 20%;
+  width: 80%;
+  background-color: #3b3b4f;
+  border-top: 2px solid #555769;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  z-index: 1000;
+  color: #fff;
+}
+
+.summary-items {
+  max-width: 80%;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.summary-items::-webkit-scrollbar {
+  height: 6px;
+}
+
+.summary-items::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.summary-total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
