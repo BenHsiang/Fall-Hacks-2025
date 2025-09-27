@@ -1,16 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+# Sets up flask
 app = Flask(__name__)
-CORS(app)  # Allow all origins by default
+# No idea wtf this does but its very important
+CORS(app)
 
+# This function auto-runs when we recieve a POST from the website
 @app.route('/', methods=['POST', 'OPTIONS'])
 def receive_json():
+    # No idea wtf this does but its very important
     if request.method == 'OPTIONS':
-        # ✅ CORS preflight needs a 200 or 204 response with no body
         return '', 204
 
-    
+    # The important part, data has the order information
     if request.is_json:
         data = request.get_json()
         print("Received data:", data)
@@ -20,5 +23,6 @@ def receive_json():
     else:
         return jsonify({"error": "Request must be JSON"}), 400
 
+# Makes the server run
 if __name__ == '__main__':
     app.run(debug=True)
