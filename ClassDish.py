@@ -17,4 +17,13 @@ class Dish:
     def remove_item(self, amount):
         if(self.ordered>=amount):
             self.ordered-= amount
+    def get_Name(self):
+        return self.Name
+    
+    def get_price(self):
+        return self.price
+    
+    def get_Amount_Ordered(self):
+        return self.ordered
+    
         
