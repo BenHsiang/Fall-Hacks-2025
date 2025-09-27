@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const selectedItems = [];
+  total = 0;
 
   // Fades out the logo screen at the start
   window.addEventListener('load', () => {
@@ -92,8 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="menu-item-price">${item.price}</div>
         `;
 
-        // Use a unique identifier (like title + restaurant name)
+        // Unique ID
         const itemId = `${restaurantName}__${item.title}`;
+
+        // ✅ Restore selection state if item is already in selectedItems
+        if (selectedItems.some(i => i.id === itemId)) {
+          div.classList.add('selected');
+        }
 
         div.addEventListener('click', () => {
           div.classList.toggle('selected');
@@ -114,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           updateSummary();
-          console.log('Current Selection:', selectedItems); // Optional live debug
+          console.log('Current Selection:', selectedItems);
         });
 
         grid.appendChild(div);
@@ -134,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     summaryItemsDiv.innerHTML = selectedItems.map(item => `${item.title}`).join(', ') || 'No items selected';
 
     // Calculate total
-    const total = selectedItems.reduce((sum, item) => {
+    total = selectedItems.reduce((sum, item) => {
       const price = parseFloat(item.price.replace('$', ''));
       return sum + (isNaN(price) ? 0 : price);
     }, 0);
@@ -166,7 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        items: selectedItems
+        items: selectedItems,
+        total: total
       })
     })
     .then(response => {
