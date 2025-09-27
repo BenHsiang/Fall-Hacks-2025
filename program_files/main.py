@@ -1,12 +1,11 @@
-# Fall Hacks 2025 Project
-# 
 # main.py
+#
+# Fall Hacks 2025 Project
 # 
 # Benley Hsiang
 # Aeris Chan
 # Brandon Fong
 # Duc anh Nguyen
-#
 
 import test
 
