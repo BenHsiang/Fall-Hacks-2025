@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      color: #fff;
+    }
+    #timer {
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer"></div>
+
+  <script>
+    function startTimer(duration) {
+      let time = duration; // duration in seconds
+      const display = document.getElementById('timer');
+
+      const interval = setInterval(() => {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        // Format with leading zero
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (time <= 0) {
+          clearInterval(interval);
+          display.textContent = "TIME UP!";
+        }
+
+        time--;
+      }, 1000);
+    }
+
+    // Example: countdown from 2 minutes (120 seconds)
+    startTimer(120);
+  </script>
+</body>
+</html>
