@@ -1,10 +1,10 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
+  const selectedItems = [];
 
   // Fades out the logo screen at the start
   window.addEventListener('load', () => {
-  const splash = document.getElementById('splash-screen');
+    const splash = document.getElementById('splash-screen');
     setTimeout(() => {
       splash.style.opacity = '0';
       splash.addEventListener('transitionend', () => {
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   });
 
-  // Menu items that each restaurant name will have
   const menuData = {
     "Restaurant Name 1": [
       {
@@ -70,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // Renders the menu items according to the restaurant name
   function renderMenu(restaurantName) {
     const grid = document.querySelector('.menu-grid');
     const items = menuData[restaurantName];
@@ -93,7 +91,31 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="menu-item-description">${item.description}</div>
           <div class="menu-item-price">${item.price}</div>
         `;
-        div.addEventListener('click', () => div.classList.toggle('selected'));
+
+        // Use a unique identifier (like title + restaurant name)
+        const itemId = `${restaurantName}__${item.title}`;
+
+        div.addEventListener('click', () => {
+          div.classList.toggle('selected');
+
+          const index = selectedItems.findIndex(i => i.id === itemId);
+          if (index > -1) {
+            // Deselect
+            selectedItems.splice(index, 1);
+          } else {
+            // Select
+            selectedItems.push({
+              id: itemId,
+              restaurant: restaurantName,
+              title: item.title,
+              description: item.description,
+              price: item.price
+            });
+          }
+
+          console.log('Current Selection:', selectedItems); // Optional live debug
+        });
+
         grid.appendChild(div);
       });
 
@@ -111,7 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Selects the first button as the default
+  // Hook up Submit button
+  document.querySelector('.submit-button').addEventListener('click', () => {
+    if (selectedItems.length === 0) {
+      alert("You haven't selected any items.");
+      return;
+    }
+
+    console.log("Selected Items:");
+    selectedItems.forEach(item => {
+      console.log(`- ${item.restaurant}: ${item.title} (${item.price})`);
+    });
+
+    alert("Check console");
+  });
+
+  // Default first button active
   const firstButton = document.querySelectorAll('.button-sidebar')[0];
   if (firstButton) {
     firstButton.classList.add('active');
