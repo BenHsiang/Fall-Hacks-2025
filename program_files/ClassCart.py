@@ -16,7 +16,7 @@ class Cart:
     def CalculateSum(self):
         self.sum=0
         for x in self.ItemsOrdered:
-            self.sum+=x.price
+            self.sum+=(x.price *x.ordered)
     
     def addDishToCart(self,Dish):
         length=len(self.ItemsOrdered)
