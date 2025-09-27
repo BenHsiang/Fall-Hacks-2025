@@ -1,6 +1,8 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Fades out the logo screen at the start
   window.addEventListener('load', () => {
   const splash = document.getElementById('splash-screen');
     setTimeout(() => {
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   });
 
+  // Menu items that each restaurant name will have
   const menuData = {
     "Restaurant Name 1": [
       {
@@ -66,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ]
   };
+
+  // Renders the menu items according to the restaurant name
   function renderMenu(restaurantName) {
     const grid = document.querySelector('.menu-grid');
     const items = menuData[restaurantName];
@@ -106,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Selects the first button as the default
   const firstButton = document.querySelectorAll('.button-sidebar')[0];
   if (firstButton) {
     firstButton.classList.add('active');
