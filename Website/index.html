@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CalcFood Menu</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
   <!-- Splash screen overlay -->
   <div id="splash-screen">
     <img src="logo.png" alt="CalcFood Logo" class="splash-logo" />
   </div>
 
-  <!-- Your topbar without logo -->
+  <!-- Topbar -->
   <div class="topbar">
     <div class="company-title">CalcFood</div>
-    <!-- No logo image here -->
   </div>
 
   <!-- Layout Container -->
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="button-sidebar">Restaurant Name 1</div>
-      <div class="button-sidebar">Restaurant Name 2</div>
-      <div class="button-sidebar">Restaurant Name 3</div>
-      <div class="button-sidebar">Restaurant Name 4</div>
+      <div class="button-sidebar" data-restaurant="Restaurant Name 1">Restaurant Name 1</div>
+      <div class="button-sidebar" data-restaurant="Restaurant Name 2">Restaurant Name 2</div>
+      <div class="button-sidebar" data-restaurant="Restaurant Name 3">Restaurant Name 3</div>
+      <div class="button-sidebar" data-restaurant="Restaurant Name 4">Restaurant Name 4</div>
 
       <!-- Submit Order Button -->
       <div class="submit-button">Submit Order</div>
@@ -35,40 +35,8 @@
 
     <!-- Menu Grid -->
     <main class="menu-grid">
-      <div class="button menu-item">
-        <div class="menu-item-title">Cheeseburger</div>
-        <div class="menu-item-description">Beef patty, cheddar, pickles, ketchup, sesame bun.</div>
-        <div class="menu-item-price">$5.99</div>
-      </div>
-      <div class="button menu-item">
-        <div class="menu-item-title">Double Bacon Burger</div>
-        <div class="menu-item-description">Double patties, crispy bacon, BBQ sauce, cheddar.</div>
-        <div class="menu-item-price">$7.99</div>
-      </div>
-      <div class="button menu-item">
-        <div class="menu-item-title">Fries (Large)</div>
-        <div class="menu-item-description">Golden, crispy fries seasoned to perfection.</div>
-        <div class="menu-item-price">$2.49</div>
-      </div>
-      <!-- ... other menu items ... -->
+      <!-- Dynamically filled by JS -->
     </main>
   </div>
-
-  <script>
-    // Toggle selection of menu items
-    document.querySelectorAll('.menu-item').forEach(item => {
-      item.addEventListener('click', () => {
-        item.classList.toggle('selected');
-      });
-    });
-
-    // Submit Order (for now just logs selected items)
-    document.querySelector('.submit-button').addEventListener('click', () => {
-      const selected = document.querySelectorAll('.menu-item.selected');
-      const items = Array.from(selected).map(item => item.querySelector('.menu-item-title').innerText);
-      alert("Order Submitted:\n" + items.join('\n'));
-    });
-  </script>
-
 </body>
 </html>

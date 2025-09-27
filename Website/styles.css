@@ -13,7 +13,7 @@ body, html {
   color: #fff;
 }
 
-/* Topbar with Left Logo and Centered Title */
+/* Topbar */
 .topbar {
   display: flex;
   align-items: center;
@@ -25,13 +25,6 @@ body, html {
   padding: 0 20px;
 }
 
-.logo-large {
-  position: absolute;
-  left: 30px;
-  height: 100px;
-  object-fit: contain;
-}
-
 .company-title {
   font-size: 42px;
   font-weight: 800;
@@ -39,7 +32,7 @@ body, html {
   text-transform: uppercase;
 }
 
-/* Layout Container */
+/* Container Layout */
 .container {
   display: flex;
   height: calc(100vh - 140px);
@@ -83,13 +76,20 @@ body, html {
   color: #3b3b4f;
 }
 
-/* Submit Order Button */
-.submit-button {
-  margin-top: 30px;
-  padding: 30px 60px;  /* bigger padding: top-bottom 20px, left-right 40px */
+.button-sidebar.active {
   background-color: #fff;
   color: #3b3b4f;
-  font-size: 24px;     /* larger font size */
+  font-weight: bold;
+  border: 2px solid #3b3b4f;
+}
+
+/* Submit Button */
+.submit-button {
+  margin-top: 30px;
+  padding: 30px 60px;
+  background-color: #fff;
+  color: #3b3b4f;
+  font-size: 24px;
   font-weight: bold;
   border: none;
   border-radius: 8px;
@@ -112,6 +112,7 @@ body, html {
   background-color: #1e1e2f;
   overflow-y: auto;
   scroll-behavior: smooth;
+  transition: opacity 0.3s ease;
 }
 
 /* Scrollbar Styling */
@@ -135,7 +136,7 @@ body, html {
   scrollbar-color: #fff #3b3b4f;
 }
 
-/* Menu Item (Order Button) */
+/* Menu Items */
 .menu-item {
   background-color: #3b3b4f;
   height: 240px;
@@ -157,7 +158,6 @@ body, html {
   transform: scale(1.02);
 }
 
-/* Selected State */
 .menu-item.selected {
   background-color: #ffffff79;
   color: #3b3b4f;
@@ -174,7 +174,6 @@ body, html {
   color: #3b3b4f;
 }
 
-/* Menu Text */
 .menu-item-title {
   font-size: 20px;
   font-weight: bold;
@@ -182,11 +181,13 @@ body, html {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
 .menu-item-description {
   font-size: 14px;
   color: #eee;
   flex-grow: 1;
 }
+
 .menu-item-price {
   font-weight: bold;
   color: #fff;
@@ -194,7 +195,7 @@ body, html {
   text-align: right;
 }
 
-/* Splash screen overlay */
+/* Splash Screen */
 #splash-screen {
   position: fixed;
   top: 0; left: 0;
@@ -209,7 +210,6 @@ body, html {
   transition: opacity 1.5s ease;
 }
 
-/* Splash logo — much bigger now */
 .splash-logo {
   height: 750px;
   width: auto;
