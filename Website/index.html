@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CalcFood Menu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Splash screen overlay -->
+  <div id="splash-screen">
+    <img src="logo.png" alt="CalcFood Logo" class="splash-logo" />
+  </div>
+
+  <!-- Your topbar without logo -->
+  <div class="topbar">
+    <div class="company-title">CalcFood</div>
+    <!-- No logo image here -->
+  </div>
+
+  <!-- Layout Container -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="button-sidebar">Order</div>
+      <div class="button-sidebar">Deals</div>
+      <div class="button-sidebar">Drinks</div>
+      <div class="button-sidebar">Contact</div>
+
+      <!-- Submit Order Button -->
+      <div class="submit-button">Submit Order</div>
+    </aside>
+
+    <!-- Menu Grid -->
+    <main class="menu-grid">
+      <div class="button menu-item">
+        <div class="menu-item-title">Cheeseburger</div>
+        <div class="menu-item-description">Beef patty, cheddar, pickles, ketchup, sesame bun.</div>
+        <div class="menu-item-price">$5.99</div>
+      </div>
+      <div class="button menu-item">
+        <div class="menu-item-title">Double Bacon Burger</div>
+        <div class="menu-item-description">Double patties, crispy bacon, BBQ sauce, cheddar.</div>
+        <div class="menu-item-price">$7.99</div>
+      </div>
+      <div class="button menu-item">
+        <div class="menu-item-title">Fries (Large)</div>
+        <div class="menu-item-description">Golden, crispy fries seasoned to perfection.</div>
+        <div class="menu-item-price">$2.49</div>
+      </div>
+      <!-- ... other menu items ... -->
+    </main>
+  </div>
+
+  <script>
+    // Toggle selection of menu items
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('selected');
+      });
+    });
+
+    // Submit Order (for now just logs selected items)
+    document.querySelector('.submit-button').addEventListener('click', () => {
+      const selected = document.querySelectorAll('.menu-item.selected');
+      const items = Array.from(selected).map(item => item.querySelector('.menu-item-title').innerText);
+      alert("Order Submitted:\n" + items.join('\n'));
+    });
+  </script>
+
+</body>
+</html>
