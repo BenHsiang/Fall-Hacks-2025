@@ -33,8 +33,6 @@
       const qEl = document.getElementById('q');
       qEl.textContent = '(loading question...)';
       try {
-        // Optionally pass topic/difficulty via query params:
-        // const r = await fetch(`${API}/calc1/next?topic=derivatives&difficulty=easy`);
         const r = await fetch(`${API}/calc1/next`);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data = await r.json();
