@@ -12,7 +12,7 @@
   <style>
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
     .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-    .ok { color: #0a7c39; } .bad { color: #b00020; }
+    .ok { color: #0a7c39; } .bad { color: #ffffff; }
   </style>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -22,7 +22,8 @@
     <div id="order"></div>
   </div>
 
-  <h2>Your Question (5 times guesses. Each wrong answer = +$0.5)</h2>
+  <h2>Your Question (5 times guesses. Each wrong answer = +$10)</h2>
+  <div id="attempts" style="margin:6px 0;"></div>
   <div class="card">
     <div id="q">(loading...)</div>
     <div style="margin-top:10px;">
