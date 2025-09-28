@@ -29,7 +29,6 @@ async function loadOrder() {
     if (!raw) { document.getElementById('order').textContent = "No order data."; return; }
     const data = JSON.parse(raw);
     const names = (data.items || []).map(i => i.title).join(', ');
-    print(names);
     document.getElementById('order').textContent = `Items: ${names || '(none)'}  |  Total: $${(data.total||0).toFixed(2)}`;
 }
 
