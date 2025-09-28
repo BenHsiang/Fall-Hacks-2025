@@ -23,4 +23,4 @@ ollama pull qwen2.5:7b-instruct
 
 # Run the FastAPI server
 uvicorn server:app --reload --host 127.0.0.1 --port 8000
-```ollama pull qwen2.5:7b-instruct
+```
