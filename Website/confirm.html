@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Confirm & Question</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    .ok { color: #0a7c39; } .bad { color: #b00020; }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h2>Order Confirmation</h2>
+  <div class="card">
+    <div id="order"></div>
+  </div>
+
+  <h2>Your Question (5 times guesses. Each wrong answer = +$0.5)</h2>
+  <div class="card">
+    <div id="q">(loading...)</div>
+    <div style="margin-top:10px;">
+      <input id="ans" placeholder="Type your answer (plain math, e.g., 1/3, e^x*(2x+1), ln(x)+C)" style="width:100%;padding:8px;">
+      <button id="check" style="margin-top:8px;">Check Answer</button>
+      <div id="result" style="margin-top:8px;"></div>
+      <div id="answer" style="margin-top:8px;"></div>
+    </div>
+  </div>
+<script src="confirm.js"></script>
+</body>
+</html>
