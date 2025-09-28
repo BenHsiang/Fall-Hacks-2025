@@ -8,9 +8,11 @@
 body, html {
   height: 100%;
   font-family: 'Orbitron', sans-serif;
-  background-color: #1e1e2f;
-  overflow: hidden;
   color: #fff;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b42);
+  overflow-x: hidden;   /* prevent horizontal scroll */
+  overflow-y: auto;     /* allow vertical scroll */
+  -webkit-overflow-scrolling: touch; /* smoother on iOS */
 }
 
 /* Topbar */
@@ -307,4 +309,78 @@ body, html {
 .summary-total {
   font-size: 32px;
   color: #00ffcc;
+}
+
+/* Hero Section */
+#hero {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #2b2b42, #1e1e2f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: #fff;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeIn 2s ease;
+}
+
+.hero-logo {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+#hero h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+/* Scroll down indicator */
+.scroll-indicator {
+  font-size: 40px;
+  animation: bounce 1.5s infinite;
+  color: #00ffcc;
+  margin-top: 20px;
+}
+
+/* Bouncing arrow animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade in order section as it enters view */
+#order-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#order-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }

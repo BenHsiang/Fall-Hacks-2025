@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const orderSection = document.getElementById("order-section");
+
+  // Show the order section only when it comes into view
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        orderSection.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(orderSection);
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const selectedItems = [];
@@ -205,4 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
     firstButton.classList.add('active');
     renderMenu(firstButton.getAttribute('data-restaurant'));
   }
+});
+
+// Fades out the logo screen at the start
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash-screen');
+  setTimeout(() => {
+    splash.style.opacity = '0';
+    splash.addEventListener('transitionend', () => {
+      splash.style.display = 'none';
+    });
+  }, 1000);
 });
