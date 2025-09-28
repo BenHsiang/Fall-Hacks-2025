@@ -1,5 +1,4 @@
-# Fall-Hacks-2025
-CALCFOOD
+# CALCFOOD
 
 Project: Food ordering app but in order to use it, you must solve various math equations.
 
@@ -14,7 +13,7 @@ HTML + JavaScript (frontend with KaTeX to render math)
 
 1. Install Ollama
 
-Download Ollama here: 👉 https://ollama.com/download
+Download Ollama here:  htps://ollama.com/download
 
 Then pull the model:
 
