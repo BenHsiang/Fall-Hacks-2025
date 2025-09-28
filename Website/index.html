@@ -8,44 +8,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <script src="script.js" defer></script>
 </head>
-
 <body>
-  <!-- Splash screen overlay -->
-  <div id="splash-screen">
-    <img src="logo.png" alt="CalcFood Logo" class="splash-logo" />
+  <!-- Hero / Starting Page -->
+  <section id="hero">
+    <div class="hero-content">
+      <img src="logo.png" alt="CalcFood Logo" class="hero-logo" />
+      <h1>Welcome to CalcFood</h1>
+      <p>Scroll down to begin your order</p>
+      <div class="scroll-indicator">▼</div>
+    </div>
+  </section>
+
+  <!-- Everything below is hidden until scroll -->
+  <div id="order-section">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="company-title">CalcFood</div>
+    </div>
+
+    <!-- Layout Container -->
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="button-sidebar" data-restaurant="Restaurant Name 1">Restaurant Name 1</div>
+        <div class="button-sidebar" data-restaurant="Restaurant Name 2">Restaurant Name 2</div>
+        <div class="button-sidebar" data-restaurant="Restaurant Name 3">Restaurant Name 3</div>
+        <div class="button-sidebar" data-restaurant="Restaurant Name 4">Restaurant Name 4</div>
+        <div class="submit-button">Submit Order</div>
+      </aside>
+
+      <!-- Menu Grid -->
+      <main class="menu-grid"></main>
+    </div>
+
+    <!-- Summary Window -->
+    <div class="summary-window">
+      <div class="summary-items"></div>
+      <div class="summary-total">Total: $0.00</div>
+    </div>
   </div>
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="company-title">CalcFood</div>
-  </div>
-
-  <!-- Layout Container -->
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="button-sidebar" data-restaurant="Restaurant Name 1">Restaurant Name 1</div>
-      <div class="button-sidebar" data-restaurant="Restaurant Name 2">Restaurant Name 2</div>
-      <div class="button-sidebar" data-restaurant="Restaurant Name 3">Restaurant Name 3</div>
-      <div class="button-sidebar" data-restaurant="Restaurant Name 4">Restaurant Name 4</div>
-
-      <!-- Submit Order Button -->
-      <div class="submit-button">Submit Order</div>
-    </aside>
-
-    <!-- Menu Grid -->
-    <main class="menu-grid">
-      <!-- Dynamically filled by JS -->
-    </main>
-  </div>
-
-  <!-- Summary Window -->
-<div class="summary-window">
-  <div class="summary-items"></div>
-  <div class="summary-total">Total: $0.00</div>
-</div>
-
 </body>
+
 </html>
 
 
