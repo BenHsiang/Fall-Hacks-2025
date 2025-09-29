@@ -24,7 +24,7 @@ app.add_middleware(
 # In-memory: id -> {q, topic, difficulty, answer, ts}
 SESSION: Dict[str, Dict[str, Any]] = {}
 
-def ollama_generate(prompt: str, temperature=0.4, num_ctx=1536, num_predict=700) -> str:
+def ollama_generate(prompt: str, temperature=0.4    , num_ctx=1536, num_predict=700) -> str:
     r = requests.post(
         OLLAMA_URL,
         json={"model": MODEL, "prompt": prompt,

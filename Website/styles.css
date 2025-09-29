@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-body, html  {
+body, html:not(#q) {
   height: 100%;
   font-family: 'Orbitron', sans-serif;
   color: #fff;
@@ -15,6 +15,10 @@ body, html  {
   -webkit-overflow-scrolling: touch; /* smoother on iOS */
 }
 
+.confirmbody {
+  margin: 24px; 
+
+}
 /* Topbar */
 .topbar {
   display: flex;
